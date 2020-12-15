@@ -33,15 +33,15 @@
 ## Association
 
 - belongs_to :user
-- has_many   :deals
+- has_one    :deal
 
 ## destinations テーブル
 
 | Column        | Type        | Options                        |
 | ------------- | ----------- | ------------------------------ |
-| post_code_id  | string      | null: false                    |
+| post_code     | string      | null: false                    |
 | prefecture_id | integer     | null: false                    |
-| city_id       | string      | null: false                    |
+| city          | string      | null: false                    |
 | address       | string      | null: false                    |
 | building_name | string      |                                |
 | phone_number  | string      | null: false                    |
@@ -59,5 +59,6 @@
 
 ## Association
 
+- belongs_to :user
 - has_one    :destination
 - belongs_to :item
