@@ -15,7 +15,7 @@
 
 ## Association
 - has_many :items
-- has_one  :description
+- has_many :deals
 
 ## items テーブル
 
@@ -33,31 +33,31 @@
 ## Association
 
 - belongs_to :user
+- has_many   :deals
 
-## destination テーブル
+## destinations テーブル
 
 | Column        | Type        | Options                        |
 | ------------- | ----------- | ------------------------------ |
 | post_code     | string      | null: false                    |
-| prefecture    | string      | null: false                    |
+| prefecture    | integer     | null: false                    |
 | city          | string      | null: false                    |
 | address       | string      | null: false                    |
 | building_name | string      |                                |
 | phone_number  | string      | null: false                    |
-| user          | references  | null: false, foreign_key :true | 
 
 ## Association
 
-- belongs_to :user
+- belongs_to :deal
 
-## deal テーブル
+## deals テーブル
 
 | Column      | Type       | Options                         |
 | ----------- | ---------- | ------------------------------- |
-| user_id     | references | null: false, foreign_key :true  |
-| item_id     | references | null: false, foreign_key :true  |
+| user        | references | null: false, foreign_key :true  |
+| item        | references | null: false, foreign_key :true  |
 
 ## Association
 
-- belongs_to :user
+- has_one    :destination
 - belongs_to :item
