@@ -19,16 +19,17 @@
 
 ## items テーブル
 
-| Column         | Type       | Options                       |
-| -------------  | ---------- | ----------------------------- |
-| name           | string     | null: false                   |
-| description    | text       | null: false                   |
-| category_id    | integer    | null: false                   |
-| condition_id   | integer    | null: false                   |
-| cost_id        | integer    | null: false                   |
-| prefecture_id  | integer    | null: false                   |
-| date_id        | integer    | null: false                   |
-| user           | references | null: false, foreign_key :true|
+| Column         | Type       | Options                        |
+| -------------  | ---------- | ------------------------------ |
+| name           | string     | null: false                    |
+| description    | text       | null: false                    |
+| category_id    | integer    | null: false                    |
+| condition_id   | integer    | null: false                    |
+| cost_id        | integer    | null: false                    |
+| prefecture_id  | integer    | null: false                    |
+| date_id        | integer    | null: false                    |
+| price          | integer    | null: false                    |
+| user           | references | null: false, foreign_key :true |
 
 ## Association
 
@@ -54,8 +55,8 @@
 
 | Column      | Type       | Options                         |
 | ----------- | ---------- | ------------------------------- |
-| user        | references | null: false, foreign_key :true  |
-| item        | references | null: false, foreign_key :true  |
+| user_id     | references | null: false, foreign_key :true  |
+| item_id     | references | null: false, foreign_key :true  |
 
 ## Association
 
