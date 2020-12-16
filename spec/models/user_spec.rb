@@ -5,11 +5,6 @@ describe User do
    @user = FactoryBot.build(:user)
  end
 
-  #it "全ての項目の入力が存在すれば登録できること"
-    #user = build(:user)
-    #expect(user).to be_valid
-  #end
-
   it "nicknameがない場合は登録できない" do
     @user.nickname = nil
     @user.valid?
