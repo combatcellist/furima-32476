@@ -74,8 +74,8 @@ describe User do
   end
 
   it "全角ではパスワード登録できない" do
-    @user.password = "ABCDEF"
-    @user.password_confirmation = "ABCDEF"
+    @user.password = "ＡＢＣＤＥＦ"
+    @user.password_confirmation = "ＡＢＣＤＥＦ"
     @user.valid?
     expect(@user.errors.full_messages).to include("Password is invalid")
   end
