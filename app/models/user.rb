@@ -7,7 +7,9 @@ class User < ApplicationRecord
     with_options presence: true do
         validates :nickname
         validates :birth_date
-        validates :password, length: { minimum: 6}, format: {with: /\A[a-z\d]{8,100}+\z/i }
+
+        VALID_PASSWORD_REGEX = (/\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i)
+        validates :password, format: {with: VALID_PASSWORD_REGEX }
         
         with_options format: {with: /\A[ぁ-んァ-ン一-龥]/ } do
           validates :family_name 
