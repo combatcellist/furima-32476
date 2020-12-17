@@ -5,6 +5,15 @@ describe User do
    @user = FactoryBot.build(:user)
  end
 
+ context '新規登録ができる時' do
+  it "全ての情報が入力されていれば登録できる" do
+    @user = FactoryBot.create(:user)
+    expect(@user).to be_valid
+   end
+ end
+ 
+
+ context '新規登録できない時' do
   it "nicknameがない場合は登録できない" do
     @user.nickname = nil
     @user.valid?
@@ -60,6 +69,13 @@ describe User do
   it "数字だけではパスワード登録できない" do
     @user.password = "123456"
     @user.password_confirmation = "123456"
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Password is invalid")
+  end
+
+  it "全角ではパスワード登録できない" do
+    @user.password = "ABCDEF"
+    @user.password_confirmation = "ABCDEF"
     @user.valid?
     expect(@user.errors.full_messages).to include("Password is invalid")
   end
@@ -134,19 +150,11 @@ describe User do
   end
 
 
-
-
-
-
   it "birth_dateがない場合は登録できない" do
     @user.birth_date = nil
     @user.valid?
     expect(@user.errors.full_messages).to include("Birth date can't be blank")
-  end
-
-
-
-
-
+  end 
+ end
 
 end
