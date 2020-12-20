@@ -10,10 +10,11 @@ class Item < ApplicationRecord
     validates :condition_id
     validates :cost_id
     validates :prefecture_id
-    #validates :date_id
     validates :delivery_day_id
-    validates :price
-    #validates :genre_id, numericality: { other_than: 1 }
+
+    VALID＿PRICE_LEGEX = /\A[0-9]+\z/
+    validates :price, inclusion: { in: (300..9999999)}, format: {with: VALID＿PRICE_LEGEX}
+
   end
 
   belongs_to :user
