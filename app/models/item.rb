@@ -10,9 +10,10 @@ class Item < ApplicationRecord
     validates :condition_id
     validates :cost_id
     validates :prefecture_id
-    validates :date_id
+    #validates :date_id
+    validates :delivery_day_id
     validates :price
-    validates :genre_id, numericality: { other_than: 1 }
+    #validates :genre_id, numericality: { other_than: 1 }
   end
 
   belongs_to :user

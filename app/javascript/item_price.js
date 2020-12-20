@@ -1,8 +1,3 @@
-// function calc () {
-//   console.log("OK")
-  
-// };
-
 window.addEventListener('load', () => {
   const priceInput = document.getElementById("item-price");
   priceInput.addEventListener('input', () => {
