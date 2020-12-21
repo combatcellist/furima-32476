@@ -1,6 +1,9 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
+  belongs_to :cost
+
+  
 
   with_options presence: true do
     validates :image
