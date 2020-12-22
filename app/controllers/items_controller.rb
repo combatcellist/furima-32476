@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   before_action :authenticate_user!, only: [:index, :show, :update]
   # before_action :baria_user, only: [:edit, :update]
 
@@ -15,9 +16,9 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def edit
-    @item = Item.find(params[:id])
-  end
+   def edit
+    # @item = Item.find(params[:id])
+   end
 
   def update
     @item = Item.find(params[:id])
