@@ -1,9 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!
 
-  def move_to_root_path
-    redirect_to action: :edit unless user_signed_in?
-  end
+  before_action :authenticate_user!, only: [:index, :show, :update, :edit]
+  before_action :set_item, only: [:edit, :update, :show]
 
 
   def index
@@ -14,12 +12,19 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-   def edit
-    # @item = Item.find(params[:id])
-   end
+  def edit
+    redirect_to root_path unless current_user == @item.user
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
+  end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def create
@@ -45,6 +50,10 @@ class ItemsController < ApplicationController
       :delivery_day_id,
       :price
     ).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
