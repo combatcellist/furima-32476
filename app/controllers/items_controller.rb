@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :update]
-  # before_action :baria_user, only: [:edit, :update]
+  before_action :set_item, only: [:edit, :update, :show]
 
   def move_to_root_path
     redirect_to action: :edit unless user_signed_in?
@@ -16,11 +16,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path(@item.id)
     else
@@ -29,7 +27,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def create
@@ -57,10 +54,8 @@ class ItemsController < ApplicationController
     ).merge(user_id: current_user.id)
   end
 
-  # def baria_user
-    # unless Item.find(params[:id]).user.id.to_i == current_user.id
-        # redirect_to root_path
-    # end
-  # end
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
 end
