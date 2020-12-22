@@ -3,10 +3,6 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :update]
   before_action :set_item, only: [:edit, :update, :show]
 
-  def move_to_root_path
-    redirect_to action: :edit unless user_signed_in?
-  end
-
 
   def index
     @items = Item.all.order("created_at DESC")
