@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
 
   def move_to_root_path
     redirect_to action: :edit unless user_signed_in?
@@ -16,6 +16,15 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to item_path(item.id)
+    else
+      render :edit
+    end
   end
 
   def show
