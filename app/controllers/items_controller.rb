@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def move_to_root_path
     redirect_to action: :edit unless user_signed_in?
