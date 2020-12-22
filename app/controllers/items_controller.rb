@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, only: [:index, :show, :update]
+  # before_action :baria_user, only: [:edit, :update]
 
   def move_to_root_path
     redirect_to action: :edit unless user_signed_in?
@@ -55,5 +56,11 @@ class ItemsController < ApplicationController
       :price
     ).merge(user_id: current_user.id)
   end
+
+  # def baria_user
+    # unless Item.find(params[:id]).user.id.to_i == current_user.id
+        # redirect_to root_path
+    # end
+  # end
 
 end
