@@ -14,10 +14,12 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def edit
-  end
+   def edit
+    # @item = Item.find(params[:id])
+   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def create
