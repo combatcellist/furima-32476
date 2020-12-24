@@ -15,7 +15,7 @@
 
 ## Association
 - has_many :items
-- has_many :deals
+- has_many :order
 
 
 ## items テーブル
@@ -35,7 +35,7 @@
 ## Association
 
 - belongs_to :user
-- has_one    :deal
+- has_one    :order
 
 
 ## destinations テーブル
@@ -53,15 +53,17 @@
 
 ## Association
 
-- belongs_to :deal
+- belongs_to :order
 
 
-## deals テーブル
+## orders テーブル
 
 | Column      | Type       | Options                         |
 | ----------- | ---------- | ------------------------------- |
 | user        | references | null: false, foreign_key :true  |
 | item        | references | null: false, foreign_key :true  |
+| price       | references | null: false, foreign_key :true  |
+
 
 ## Association
 

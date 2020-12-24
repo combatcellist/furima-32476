@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to :condition
   belongs_to :delivery_day
   belongs_to :prefecture
+  belongs_to :name
   
 
   
@@ -27,4 +28,5 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one    :deal
   has_one_attached :image
+  has_one    :order
 end
