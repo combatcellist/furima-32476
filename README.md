@@ -48,7 +48,7 @@
 | address       | string      | null: false                    |
 | building_name | string      |                                |
 | phone_number  | string      | null: false                    |
-| deal          | references  | null: false, foreign_key :true |
+| order         | references  | null: false, foreign_key :true |
 
 
 ## Association
@@ -62,7 +62,6 @@
 | ----------- | ---------- | ------------------------------- |
 | user        | references | null: false, foreign_key :true  |
 | item        | references | null: false, foreign_key :true  |
-| price       | references | null: false, foreign_key :true  |
 
 
 ## Association

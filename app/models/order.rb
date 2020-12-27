@@ -1,7 +1,6 @@
-class Order < ApplicationRecord
-
-  validates :price,   presence: true
+class Order  < ApplicationRecord
 
   belongs_to :item
   belongs_to :user
+
 end

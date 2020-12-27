@@ -49,7 +49,8 @@ ActiveRecord::Schema.define(version: 2020_12_23_023526) do
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "price", null: false
+    t.string "user", null: false
+    t.string "item", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

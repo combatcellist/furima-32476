@@ -26,7 +26,6 @@ class Item < ApplicationRecord
   end
 
   belongs_to :user
-  has_one    :deal
   has_one_attached :image
   has_one    :order
 end
