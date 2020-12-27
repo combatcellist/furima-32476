@@ -9,7 +9,8 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
     @order = Form.new(order_params)
     if @order.valid?
-      pay_item.save
+      pay_item
+      @order.save
       redirect_to root_path
     else
       render :index
@@ -27,7 +28,7 @@ class OrdersController < ApplicationController
       :building_name,
       :phone_number,
       :token
-    ).merge(token: params[:token], item_id: params[:item_id])
+    ).merge(token: params[:token], item_id: params[:item_id], user_id: current_user.id)
   end
 
   
