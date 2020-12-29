@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  before_action :sold_out_item, only: [:index]
 
   def index
     @item = Item.find(params[:item_id])
@@ -42,9 +41,9 @@ class OrdersController < ApplicationController
       )
   end
 
-  def sold_out_item
-    redirect_to root_path if @item.order.present?
-  end
+  # def sold_out_item
+    # redirect_to root_path if @item.order.present?
+  # end
 
 
 end
