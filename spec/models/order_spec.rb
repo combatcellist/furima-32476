@@ -7,7 +7,6 @@ RSpec.describe Form, type: :model do
   
   context '購入できる時' do
     it "全ての必須項目が入力されていれば購入できる" do
-      @order = FactoryBot(:form)
       expect(@order).to be_valid
     end 
   end
