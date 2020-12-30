@@ -6,8 +6,8 @@ class Form
     validates :city
     validates :address
     validates :token
-    validates :prefecture_id
-    validates :phone_number, format: { with: /\A0[0-9]+\z/ }
+    validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :phone_number, format: { with: /\A\d{11}\z/  }
     validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/ }
   end
 

@@ -9,6 +9,11 @@ RSpec.describe Form, type: :model do
     it "全ての必須項目が入力されていれば購入できる" do
       expect(@order).to be_valid
     end 
+
+    it "建物名がなくても購入できる" do
+      @order.building_name = nil
+      expect(@order).to be_valid
+    end
   end
 
  context '購入できない時' do
@@ -24,8 +29,20 @@ RSpec.describe Form, type: :model do
     expect(@order.errors.full_messages).to include("Postcode can't be blank")
   end
 
+  it "ハイフンがなければ購入できない" do
+    @order.postcode = "1234567"
+    @order.valid?
+    expect(@order.errors.full_messages).to include("Postcode is invalid")
+  end
+
   it "都道府県名がなければ購入できない" do
     @order.prefecture_id = nil
+    @order.valid?
+    expect(@order.errors.full_messages).to include("Prefecture can't be blank")
+  end
+
+  it "---が選ばれている場合は購入できない" do
+    @order.prefecture_id = 1
     @order.valid?
     expect(@order.errors.full_messages).to include("Prefecture can't be blank")
   end
@@ -47,6 +64,20 @@ RSpec.describe Form, type: :model do
     @order.valid?
     expect(@order.errors.full_messages).to include("Phone number can't be blank")
   end
+
+  it "12桁以上では購入できない" do
+    @order.phone_number = "090123456789"
+    @order.valid?
+    expect(@order.errors.full_messages).to include("Phone number is invalid")
+  end
+
+  it "英数混合では購入できない" do
+    @order.phone_number = "0901234567a"
+    @order.valid?
+    expect(@order.errors.full_messages).to include("Phone number is invalid")
+  end
+
+  
 
  end
 end
