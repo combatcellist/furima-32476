@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
   end
 
   def do_item
-    redirect_to root_path unless current_user.id == @item.user.id
+    redirect_to root_path unless current_user.id == @item.user.id && @item.order.blank?
   end
 
 end

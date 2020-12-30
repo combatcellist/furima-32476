@@ -6,9 +6,6 @@ class Item < ApplicationRecord
   belongs_to :delivery_day
   belongs_to :prefecture
   
-
-  
-
   with_options presence: true do
     validates :image
     validates :name
@@ -24,7 +21,7 @@ class Item < ApplicationRecord
 
   end
 
-  belongs_to :user
-  has_one    :deal
+  belongs_to       :user
   has_one_attached :image
+  has_one          :order
 end
