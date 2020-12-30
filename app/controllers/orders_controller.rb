@@ -1,8 +1,12 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @item = Item.find(params[:item_id])
     @order = Form.new
+    if current_user == @item.user
+      redirect_to root_path
+    end
   end
 
   def create
@@ -41,9 +45,6 @@ class OrdersController < ApplicationController
       )
   end
 
-  # def sold_out_item
-    # redirect_to root_path if @item.order.present?
-  # end
 
 
 end
