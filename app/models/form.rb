@@ -3,6 +3,8 @@ class Form
   attr_accessor :token, :postcode, :prefecture_id, :city, :address, :building_name, :phone_number, :user_id, :item_id
 
   with_options presence: true do
+    validates :user_id
+    validates :item_id
     validates :city
     validates :address
     validates :token

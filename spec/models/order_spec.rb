@@ -77,6 +77,20 @@ RSpec.describe Form, type: :model do
     expect(@order.errors.full_messages).to include("Phone number is invalid")
   end
 
+  it "user_idが空だと購入できない" do
+    @order.user_id = nil
+    @order.valid?
+    expect(@order.errors.full_messages).to include("User can't be blank")
+  end
+
+  it "item_idが空だと購入できない" do
+    @order.item_id = nil
+    @order.valid?
+    expect(@order.errors.full_messages).to include("Item can't be blank")
+  end
+
+  
+
   
 
  end
