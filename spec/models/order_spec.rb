@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Form, type: :model do
   before do
     @order = FactoryBot.build(:form)
+    @order.user_id = FactoryBot.build(:form)
+    @order.item_id = FactoryBot.build(:form)
   end
   
   context '購入できる時' do
@@ -88,10 +90,6 @@ RSpec.describe Form, type: :model do
     @order.valid?
     expect(@order.errors.full_messages).to include("Item can't be blank")
   end
-
-  
-
-  
 
  end
 end
