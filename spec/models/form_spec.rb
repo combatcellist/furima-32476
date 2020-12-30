@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Form, type: :model do
   before do
-    @order = FactoryBot.build(:form)
-    @order.user_id = FactoryBot.build(:form)
-    @order.item_id = FactoryBot.build(:form)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item)
+    @order = FactoryBot.build(:form, user_id: @user.id, item_id: @item.id)
   end
   
   context '購入できる時' do
