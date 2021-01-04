@@ -1,7 +1,14 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
-
+  before_action :correct_order, only: [:index]
+  
+  def correct_order
+   if @item.user.id == current_user.id || @item.order.present?
+      redirect_to root_path
+   end
+  end
+  
   def index
     @order = Form.new
     if current_user == @item.user && @item.blank?
