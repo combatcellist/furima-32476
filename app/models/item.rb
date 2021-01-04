@@ -10,11 +10,11 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :description
-    validates :category_id
-    validates :condition_id
-    validates :cost_id
-    validates :prefecture_id
-    validates :delivery_day_id
+    validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :cost_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :delivery_day_id, numericality: { other_than: 1, message: "can't be blank" }
 
     VALID＿PRICE_LEGEX = /\A[0-9]+\z/
     validates :price, inclusion: { in: (300..9999999)}, format: {with: VALID＿PRICE_LEGEX}
